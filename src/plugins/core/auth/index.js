@@ -39,21 +39,18 @@ export async function register(server) {
 
           // fetch from db
           const account = await UserModel.query()
-            .select('id', 'username', 'email', 'user_access')
+            .select('id', 'username', 'email', 'role')
             .findOne({ id: sid });
 
           if (!account) {
             return { valid: false };
           }
 
-          // const roles = [];
-          // account.user_access.role.map((r) => roles.push(r));
-
           return {
             valid: true,
             credentials: {
               account,
-              // scope: account.user_access.role,
+              // scope: account.role,
             },
           };
         },
