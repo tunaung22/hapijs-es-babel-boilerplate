@@ -1,0 +1,10 @@
+# Hapi.js ES Babel Boilerplate
+  - [Hapi.js](https://hapi.dev/)
+  - [ESLint](https://eslint.org/)
+  - [eslint-config-airbnb-base](https://www.npmjs.com/package/eslint-config-airbnb-base)
+  - [babeljs.io](https://babeljs.io/)
+  - [glue](https://hapi.dev/family/glue)
+  - [confidence](https://github.com/hapipal/confidence)
+  - [handlerbars](https://www.npmjs.com/package/handlebars)
+  - [knex.js](https://knexjs.org/)
+  - [objection.js](https://vincit.github.io/objection.js/)

@@ -1,0 +1,111 @@
+{
+  "db": {
+    "pg": {
+      "host": {
+        "$filter": "env",
+        "$base": "localhost",
+        "$default": "localhost",
+        "production": {
+          "$env": "PG_DB_HOST"
+        },
+        "development": "localhost"
+      },
+      "port": {
+        "$filter": "env",
+        "$default": 5432,
+        "$base": 5432,
+        "production": {
+          "$env": "PG_DB_PORT"
+        },
+        "development": "5432"
+      },
+      "dbname": {
+        "$filter": "env",
+        "$default": "my_db",
+        "production": {
+          "$env": "PG_DB_NAME"
+        },
+        "development": "dev_my_db"
+      },
+      "username": {
+        "$filter": "env",
+        "$default": "postgres",
+        "production": {
+          "$env": "PG_DB_USERNAME"
+        },
+        "development": "postgres"
+      },
+      "password": {
+        "$filter": "env",
+        "$default": "null",
+        "production": {
+          "$env": "PG_DB_PASSWORD"
+        },
+        "development": "null"
+      },
+      "pool": {
+        "min": {
+          "$filter": "env",
+          "$default": 2,
+          "production": {
+            "$env": "PG_DB_POOL_MIN"
+          },
+          "development": 2
+        },
+        "max": {
+          "$filter": "env",
+          "$default": 10,
+          "production": {
+            "$env": "PG_DB_POOL_MAX"
+          },
+          "development": 10
+        }
+      }
+    }
+  },
+  "knex": {
+    "migration_table": "knex_migrations"
+  },
+  "security": {
+    "bcrypt": { "saltRounds": 12 },
+    "authentication": {
+      "$filter": "env",
+      "$base": {
+        "encoding": "iron",
+        "clearInvalid": true,
+        "strictHeader": true
+      },
+      "production": {
+        "cookie": {
+          "name": { "$env": "APP_COOKIE_NAME" },
+          "password": { "$env": "APP_COOKIE_SECRET" },
+          "isSecure": true,
+          "isHttpOnly": true,
+          "ttl": "604800"
+        }
+      },
+      "development": {
+        "cookie": {
+          "name": "app-cookie",
+          "password": "!wsYhFA*C2U6nz=Bu^%A@^F#SF3&kSR6",
+          "isSecure": false,
+          "isHttpOnly": true,
+          "ttl": 604800,
+          "notes": {
+            "cookieSecret": "32 character hashed string",
+            "ttl": "time to live"
+          } 
+        }
+      }
+    }
+  },
+  "pagination": {
+    "$filter": "env",
+    "$base": {
+      "limit": 10
+    },
+    "production": {
+      "limit": { "$env": "PAGEINATION_LIMIT" }
+    }
+  }
+}

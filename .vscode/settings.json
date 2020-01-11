@@ -1,0 +1,34 @@
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Dracula",
+  // "workbench.editor.enablePreview": true,
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
+  "explorer.openEditors.visible": 0,
+  "editor.tabSize": 2,
+  
+  "[json]": {
+    "editor.tabSize": 2
+  },
+
+  "files.associations": {
+    "*.ejs": "html",
+    "*.hb": "html",
+    "*.handlebars": "html"
+  },
+  // Emmet
+  "emmet.showSuggestionsAsSnippets": true,
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.codeActionsOnSaveTimeout": 750,
+  // "editor.formatOnSave": true,
+
+  // ESLint
+  // "eslint.lintTask.enable": false,
+  // "eslint.workingDirectories": [ "."],
+  
+}

@@ -1,0 +1,157 @@
+{
+  "server": {
+    "$filter": "env",
+    "$base": {},
+    "$default": {
+      "host": "localhost",
+      "port": 3000
+    },
+    "production": {
+      "host": {
+        "$env": "NODE_HOST"
+      },
+      "port": {
+        "$env": "NODE_PORT"
+      }
+    },
+    "development": {
+      "host": "localhost",
+      "port": 3000
+    }
+  },
+  "register": {
+    "$filter": "env",
+    "production": {
+      "plugins": [
+        {
+          "plugin": "@hapi/cookie",
+          "options": {
+          }
+        },
+        {
+          "plugin": "@hapi/vision"
+        },
+        {
+          "plugin": "@hapi/inert"
+        },
+        {
+          "plugin": "@hapi/crumb",
+          "options": {
+            "restful": false,
+            "cookieOptions": {
+              "isSecure": true
+            }
+          }
+        },
+        {
+          "plugin": "laabr",
+          "options": {
+            "formats": {
+              "onPostStart": ":time :start :level :message"
+            },
+            "indent": 0
+          }
+        },
+
+        {
+          "plugin": "./plugins/core/serve-static",
+          "options": {}
+        },
+        
+        {
+          "plugin": "./plugins/core/auth",
+          "options": {
+          }
+        },
+        {
+          "plugin": "./plugins/site/dashboard",
+          "options": {}
+        },
+
+        {
+          "plugin": "./plugins/api/api-account",
+          "options": { 
+            "auth": true,
+            "restful": true,
+            "security": true
+          },
+          "routes": { "prefix": "/api" }
+        }
+      ]
+    },
+    "development": {
+      "plugins": [
+        {
+          "plugin": "@hapi/cookie",
+          "options": {
+          }
+        },
+        {
+          "plugin": "@hapi/vision"
+        },
+        {
+          "plugin": "@hapi/inert"
+        },
+        {
+          "plugin": "@hapi/crumb",
+          "options": {
+            "restful": false,
+            "cookieOptions": {
+              "isSecure": false
+            }
+          }
+        },
+        {
+          "plugin": "hapi-swagger",
+          "options": {
+            "info": {
+              "title": "test api documentation"
+            }
+          }
+        },
+        {
+          "plugin": "Blipp",
+          "options": {
+            "showAuth": true
+          }
+        },
+        {
+          "plugin": "laabr",
+          "options": {
+            "formats": {
+              "onPostStart": ":time :start :level :message"
+            },
+            "indent": 0
+          }
+        },
+
+        {
+          "plugin": "./plugins/core/serve-static",
+          "options": {}
+        },
+        
+        {
+          "plugin": "./plugins/core/auth",
+          "options": {
+          }
+        },
+        {
+          "plugin": "./plugins/site/dashboard",
+          "options": {}
+        },
+
+        {
+          "plugin": "./plugins/api/api-account",
+          "options": { 
+            "auth": false,
+            "restful": true,
+            "security": false
+          },
+          "routes": { "prefix": "/api" }
+        }
+
+      ],
+      "options": {}
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "name": "hapijs-es-babel-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "lab",
+    "dev": "NODE_ENV=development nodemon --exec babel-node src/server.js",
+    "lint": "eslint -c .eslintrc.json ./**/*.js",
+    "copy:assets": "rsync -av ./src/assets dist/",
+    "copy:views": "rsync -av ./src/views dist/",
+    "build:babel": "babel src --out-dir dist",
+    "build": "npm run lint && npm run build:babel && npm run copy:assets && npm run copy:views",
+    "start": "node dist/server.js -r dotenv/config"
+  },
+  "keywords": [
+    "node",
+    "hapi",
+    "javascript",
+    "ecmascript",
+    "babel"
+  ],
+  "author": "tunaung2048",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/boom": "^7.4.11",
+    "@hapi/cookie": "^10.1.2",
+    "@hapi/crumb": "^7.3.2",
+    "@hapi/glue": "^6.2.0",
+    "@hapi/hapi": "^18.4.0",
+    "@hapi/inert": "^5.2.1",
+    "@hapi/joi": "^16.1.7",
+    "@hapi/vision": "^5.5.2",
+    "@hapi/wreck": "^15.0.1",
+    "bcrypt": "^3.0.6",
+    "confidence": "^4.0.2",
+    "dotenv": "^8.1.0",
+    "handlebars": "^4.3.4",
+    "hapi-swagger": "^11.1.0",
+    "knex": "^0.19.4",
+    "laabr": "^5.1.2",
+    "objection": "^2.0.7",
+    "pg": "^7.12.1",
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/node": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "blipp": "^4.0.0",
+    "code": "^5.2.4",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.19.1",
+    "lab": "^18.0.2",
+    "nodemon": "^1.19.1"
+  }
+}
