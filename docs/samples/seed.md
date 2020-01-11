@@ -12,7 +12,7 @@ async function prepareData() {
     superuser1_password: await bcrypt.hash('abc123', 12),
     superuser1_role: 'SUPERUSER',
     user1_id: uuidv4(),
-    user1_password: await bcrypt.hash('abc123, 12),
+    user1_password: await bcrypt.hash('abc123', 12),
     user1_role: 'USER',
   };
 }
